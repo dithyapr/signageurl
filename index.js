@@ -8,9 +8,9 @@ var opn = require('opn');
 
 var playnum;
 
-var signnum;
+var id;
 
-var test;
+var signnum;
 
 var fullscreen = false;
 
@@ -124,8 +124,8 @@ io.on('connection', (socket) => {
 
             
               opn(signnum[id].url);
+              // robot.keyTap("f11");
             
-          
           break;
 
           case "2":
