@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Sample website using Bootstrap and ExpressJS</title>
+
+<title>Bootstrap Card</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="index.js"></script>
+
+</head>
+
+<body class="bg-dark" style="background-image: url('images/bg.png');background-size: 100% 100%; background-attachment: fixed; background-repeat: no-repeat;">
+<div>
+<div>
+<nav class="navbar navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+     <img src="images/logo.png" width="300" height="80" class="d-inline-block align-top" alt="" loading="lazy">
+    </a>
+  </div>
+</nav>
+
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+  <div class="row row-cols-4">
+
+
+    <div class="col">
+    	<div class="card" style="width: 18rem; background-color: #2F3036;">
+		  <div class="card-body">
+		    <p class="card-text"></p>
+		    <div class="col-md-12 text-center">
+			    <ul id="messages"></ul>
+			    <form action="">
+			    	<button id="m" onclick="buttonClick1()"><img src="images/1.png" class="card-img-top" alt="..."></button>
+			    </form>
+			</div>
+		  </div>
+		</div>
+    </div>
+
+    <div class="col">
+    	<div class="card" style="width: 18rem; background-color: #2F3036;">
+		  <!-- <img src="/1.png" class="card-img-top" alt="..."> -->
+		  <div class="card-body">
+		    <p class="card-text"></p>
+		    <div class="col-md-12 text-center">
+			    <ul id="messages"></ul>
+			    <form action="">
+			    	<button id="m" onclick="buttonClick2()"><img src="images/2.png" class="card-img-top" alt="..."></button>
+			      <!-- <button id="m" onclick="buttonClick(1)" class="btn btn-primary">Send</button> -->
+			    </form>
+			</div>
+		  </div>
+		</div>
+    </div>
+    <div class="col">
+    	<div class="card" style="width: 18rem; background-color: #2F3036;">
+		  <!-- <img src="/1.png" class="card-img-top" alt="..."> -->
+		  <div class="card-body">
+		    <p class="card-text"></p>
+		    <div class="col-md-12 text-center">
+			    <ul id="messages"></ul>
+			    <form action="">
+			    	<button id="m" onclick="buttonClick3()"><img src="images/3.png" class="card-img-top" alt="..."></button>
+			      <!-- <button id="m" onclick="buttonClick(1)" class="btn btn-primary">Send</button> -->
+			    </form>
+			</div>
+		  </div>
+		</div>
+    </div>
+    <div class="col">
+    	<div class="card" style="width: 18rem; background-color: #2F3036;">
+		  <!-- <img src="/1.png" class="card-img-top" alt="..."> -->
+		  <div class="card-body">
+		    <p class="card-text"></p>
+		    <div class="col-md-12 text-center">
+			    <ul id="messages"></ul>
+			    <form action="">
+			    	<button id="m" onclick="buttonClick4()"><img src="images/4.png" class="card-img-top" alt="..."></button>
+			      <!-- <button id="m" onclick="buttonClick(1)" class="btn btn-primary">Send</button> -->
+			    </form>
+			</div>
+		  </div>
+		</div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+
+    function buttonClick1()
+    {
+        document.getElementById("m").value = 1;
+        // console.log(i);
+    }
+
+     function buttonClick2()
+    {
+        document.getElementById("m").value = 2;
+        // console.log(i);
+    }
+
+     function buttonClick3()
+    {
+        document.getElementById("m").value = 3;
+        // console.log(i);
+    }
+
+     function buttonClick4()
+    {
+        document.getElementById("m").value = 4;
+        // console.log(i);
+    }
+
+</script>
+<!-- <button onclick="buttonClick();">Click Me</button> -->
+<!-- <input type="text" id="inc" value="0"></input> -->
+
+<script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="index.js"></script>
+
+    <script>
+      $(function () {
+        var socket = io();
+        $('form').submit(function(e){
+          e.preventDefault(); // prevents page reloading
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('').text(msg));
+          console.log(msg);
+        });
+      });
+    </script>
+</body>
+</html>
